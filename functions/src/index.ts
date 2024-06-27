@@ -35,10 +35,9 @@ export const sendEmailOnNewRideBook = functions.firestore
   .onCreate(async (snap) => {
     // read the ride details
     const rideData = snap.data();
-    const uid = rideData.uid;
+    const userDocRef = rideData.uid;
 
-    // read the user document
-    const userDocRef = db.doc(uid);
+    // read the user document;
     const userDoc = await userDocRef.get();
 
     if (!userDoc.exists) {
